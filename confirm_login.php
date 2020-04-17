@@ -1,7 +1,7 @@
 <?php include '_security.php';
     validateCreditentials(); ?>
     
-<!DOCTYPE html> <!-- ce sera une page qui se lancera instant après une connexion réussie-->
+<!DOCTYPE html>
 <html>
 <head>
     <title>Q5</title>
