@@ -56,7 +56,7 @@
         if($_SESSION['user_type'] == "Acheteur") {
             echo '<div class=button-row><h1 class="text-primary text-right">' . $item->price . '€</h1>';
             echo '<a href="#"><button type="button" class="btn btn-custom btn-secondary btn-lg btn-block" onclick="addToCart(' . $item->id . ')">Ajouter au panier</button></a>';
-            echo '<a href="#"><button type="button" class="btn btn-custom btn-primary btn-lg btn-block" onclick="addToCart(' . $item->id . ')">Acheter maintenant</button></a></div>';
+            echo '<a href="cart.php?single_item=' . $item->id . '"><button type="button" class="btn btn-custom btn-primary btn-lg btn-block">Acheter maintenant</button></a></div>';
         } else {
             echo '<div class=button-row><div class="row price-row"><h5 class="mt-3">Achat immédiat:</h5><h1 class="text-primary text-right">' . $item->price . '€</h1></div>';
         }

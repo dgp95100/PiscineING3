@@ -12,18 +12,18 @@
   function createItemCard($item) {
     $image_path = '/image_database/' . $item->imgs[0];
 
-    echo '<div class="col-md-4"><div class="card">
+    echo '<div class="card">
             <img src="' . $image_path . '" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">' . $item->name . '</h5>
-              <p class="card-text overflow-auto">' . $item->long_desc . '</p>
+              <p class="card-text">' . $item->long_desc . '</p>
             </div>
             <div class="card-footer text-center">
             <a href="view_item.php?id=' . $item->id . '">
               <input class="btn btn-primary submit-button" name="button" onclick="checkCreditentials()" value="Voir l\'article">
               </a>
             </div>
-        </div></div>';
+        </div>';
     }
 ?>
   
@@ -42,7 +42,7 @@
 </head>
 <style type="text/css">
   body {
-      background: url('index_background.jpg') no-repeat center center fixed;
+      background-color: blanchedalmond;
     }
 
   .card {
@@ -50,11 +50,11 @@
     border-radius: 10px;
     background-color: #307782a6;
     margin: 20px 20px;
-    height: 100%;
   }
   .card img {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    height: 50%;
     background-color: white;
   }
 
@@ -62,18 +62,12 @@
     padding-bottom: 20%;
   }
 
-  .card-text {
-    max-height: 250px;
-  }
-
   .jumbotron {
     background-color: transparent;
-    padding-top: 10%;
-    padding-bottom: 10%;
-  }
-
-  .col-md-4 {
-    margin-bottom: 55px;
+    padding-top: 7%;
+    padding-bottom: 7%;
+    background: url('index_background.jpg') no-repeat center center/cover fixed;
+    margin: 0;
   }
 
     .searchbar{
@@ -132,6 +126,11 @@
             font-size: 23px;
             white-space: nowrap;
         }
+  
+  .container {
+    background-color: transparent;
+    margin-top: 3%;
+  }
 </style>
 
 <body>
@@ -145,34 +144,36 @@
           </div>
       </div>
     </div>
-      <div class="container">
-        <div class="card-deck">
-          <?php             
-              if($category == 1) {
-                $sql = 'SELECT * FROM items WHERE categorie = "ferraille/trésor"';
-              } else if ($category == 2) {
-                $sql = 'SELECT * FROM items WHERE categorie = "musée"';
-              } else if($category == 3) {
-                $sql = 'SELECT * FROM items WHERE categorie = "vip"';
-              }
-              
-              $result = sql_request($sql);
 
-              $i=0;
-
-              while($data = $result->fetch_assoc()) {
-                if($i%3==0) {
-                  echo '<div class="row">';
-                }
-                $item = new Item($data);
-                createItemCard($item);
-                if($i%3==2) {
-                  echo '</div>';
-                }
-                $i++;
-              }
-
-            ?>
+    <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="text-uppercase section-heading">Catégories</h2>
+                    <h3 class="text-muted section-subheading">Lorem ipsum dolor sit amet consectetur</h3>
+                </div>
+            </div>
+            <div class="row text-center">
+                  <div class="col-md-4">
+                  <a href="item_list.php?category=1">
+                    <img src="tresor.gif" width="200px" height="200px">
+                    <h4 class="section-heading">Pierres précieuses</h4>
+                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                  </a>
+                </div>
+                <div class="col-md-4">
+                  <a href="item_list.php?category=2">
+                    <img src="musée.jpg" width="200px" height="200px">
+                    <h4 class="section-heading">Objets de musée</h4>
+                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                  </a>
+                </div>
+                <div class="col-md-4">
+                  <a href="item_list.php?category=3">
+                    <img src="vip.jpg" width="200px" height="200px">
+                    <h4 class="section-heading">Accessoires VIP</h4>
+                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                  </a>
+                </div>
+            </div>
         </div>
-      </div>
 </body>
