@@ -1,22 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html> <!-- page de creation de compte, audra voir pour le type de compte (vendeur, acheteur, admin) defaçon à optimiser le site-->
 
 <head>
     <title>Q5</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- on change pas les bails :) -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/5ff10a469d.js" crossorigin="anonymous"></script>
-    <style type="text/css"> 
+    <style type="text/css">   /* css tu connais*/
     .register-form form.custom-form {
   padding-top: 55px;
   padding-left: 55px;
   padding-right: 55px;
   box-sizing: border-box;
-  background-color: transparent;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
   font: bold 14px sans-serif;
   text-align: center;
   margin: 50px;
@@ -91,13 +92,13 @@
 }
 
 .register-form .custom-form .submit-button {
+  border-radius: 2px;
   color: #ffffff;
   font-weight: bold;
   box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
   padding: 14px 22px;
   border: 0;
   margin: 30px;
-  margin-bottom: 145px;
   outline: none;
 }
 
@@ -107,30 +108,9 @@
   margin-bottom: -15px;
   color: red;
 }
-
-.btn {
-            background: linear-gradient(40deg, #ffd86f, #fc6262);
-            border-radius: 8px;
-            border: none;
-            color: blanchedalmond;
-            margin: 5%;
-            margin-top: 1%;
-            width: 20%;
-            min-width: 210px;
-            padding: 20px 25px;
-            padding-bottom: 15px;
-            display: inline-block;
-            font-size: 25px;
-            white-space: nowrap;
-        }
-
-    body {
-      background: url('index_background.jpg') no-repeat center center fixed;
-    }
-
     </style>
     <script>
-      function checkIfUsernameIsAlreadyTaken(element) {       
+      function checkIfUsernameIsAlreadyTaken(element) {       // mêmes types de fonctions que pour la page login //
         $.ajax({ url: '_isUsernameAlreadyTaken.php',
          data: {name: element.value},
          type: 'post',
@@ -160,8 +140,8 @@
       }
     </script>
     <script>
-      // Source from: https://getbootstrap.com/docs/4.4/components/forms/#validation
-      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      // Source : https://getbootstrap.com/docs/4.4/components/forms/#validation
+      // petit Exemple de starter JavaScript for disabling form submissions si un champ est invalide
       (function() {
         'use strict';
         window.addEventListener('load', function() {
@@ -185,11 +165,10 @@
 
 <body>
     <?php
-    include '_navbar.php';
+    include '_navbar.php'; 
     displayNavbar(); ?>
-
- <div class="container-fluid">
-    <div class="row register-form">
+ 
+    <div class="row register-form">  <!-- le formulaire est ici! -->
         <div class="col-md-8 offset-md-2">
             <form class="custom-form needs-validation" method="POST" action="confirm_registration.php" novalidate>
                 <h1>Inscription</h1>
@@ -197,7 +176,7 @@
                     <div class="col-sm-3 label-column"><label class="col-form-label" for="name-input-field">Pseudo </label></div>
                     <div class="col-sm-6 input-column">
                       <input class="form-control" type="text" name="pseudo"  oninput="checkIfUsernameIsAlreadyTaken(this)" required>
-                      <div class="invalid-feedback pseudo-invalid">Ce champ est obligatoire</div>
+                      <div class="invalid-feedback pseudo-invalid">Ce champ est obligatoire</div> <!-- pour pas que l'utilisateur l'oublie XD -->
                     </div>
                 </div>
                 <div class="form-row form-group" id="mail_div">
@@ -229,19 +208,18 @@
                       <select class="custom-select" id="inlineFormCustomSelect" name="status" required>
                         <option value="">Choisir...</option>
                         <option value="1">Acheteur</option>
-                        <option value="2">Vendeur</option>
+                        <option value="2">Vendeur</option> <!-- on part du principe que le site est déjà vendu à l'admin, qui adéjà fait une première connextion dessus-->
                       </select>
                       <div class="invalid-feedback">Veuillez renseigner un type de compte</div>
                     </div>
                 </div>
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" id="formCheck-1" required>
-                  <label class="form-check-label" for="formCheck-1">J'ai lu et j'accepte les termes et conditions de ce site</label>
+                  <label class="form-check-label" for="formCheck-1">J'ai lu et j'accepte les termes et conditions de ce site</label> <!-- la clause à accepter-->
                   <div class="invalid-feedback">Vous devez accepter nos termes et conditions</div>
                 </div>
                 <input class="btn btn-primary submit-button" type="submit" name="button" value="Soumettre">
               </form>
         </div>
     </div>
-    </div>
-  </body>
+</body>
